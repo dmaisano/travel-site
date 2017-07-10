@@ -13,10 +13,6 @@ gulp.task('browser-sync', () => {
       baseDir: "app"
     }
   });
-
-  //watch('./app/assets/styles/**/*.css', () => {
-  //  gulp.start('cssInject');
-  //});
 });
 
 // Compile styles.scss (SASS to CSS)
@@ -29,7 +25,7 @@ gulp.task('sass', () => {
 });
 
 // Task to Inject CSS without browser-sync doing a full refresh (f5)
-gulp.task('cssInject', ['sass'], () => { // gulp.task('styles') will run within this task
+gulp.task('cssInject', ['sass'], () => { // gulp.task('sass') will run within this task
   return gulp.src('./app/dist/styles.css')
     .pipe(browserSync.stream());
 });
