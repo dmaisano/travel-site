@@ -8,6 +8,7 @@ let nested = require('postcss-nested');
 let autoprefixer = require('autoprefixer');
 let cleanCSS = require('gulp-clean-css');
 let rename = require("gulp-rename");
+let plumber = require('gulp-plumber');
 
 // Browser-Sync Task with functionality
 gulp.task('browser-sync', () => {
@@ -22,13 +23,10 @@ gulp.task('browser-sync', () => {
 // Compile PostCSS to regular CSS to be used in the browser
 gulp.task('post-css', () => {
   gulp.src('./app/assets/styles/styles.css')
+    .pipe(plumber())
     .pipe(postCSS([cssImport, cssVars, nested, autoprefixer]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(rename({ suffix: '.min' }))
-    .on('error', (errorLog) => {
-      console.log(errorLog.toString());
-      this.emit('end');
-    })
     .pipe(gulp.dest('./app/dist'));
 });
 
