@@ -36,7 +36,6 @@ gulp.task('cssInject', ['post-css'], () => { // gulp.task('post-css') will run w
     .pipe(browserSync.stream());
 });
 
-
 // Default task that will run which handles the tasks above
 gulp.task('default', ['post-css', 'cssInject', 'browser-sync'], () => {
   gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
