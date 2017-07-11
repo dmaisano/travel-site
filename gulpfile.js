@@ -22,11 +22,11 @@ gulp.task('browser-sync', () => {
 
 // Compile PostCSS to regular CSS to be used in the browser
 gulp.task('post-css', () => {
-  gulp.src('./app/assets/styles/styles.css')
+  gulp.src('./app/assets/styles/styles.pcss')
     .pipe(plumber())
     .pipe(postCSS([cssImport, cssVars, nested, autoprefixer]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(rename({ suffix: '.min' }))
+    .pipe(rename({ suffix: '.min', extname: '.css' }))
     .pipe(gulp.dest('./app/dist'));
 });
 
@@ -39,6 +39,6 @@ gulp.task('cssInject', ['post-css'], () => { // gulp.task('post-css') will run w
 
 // Default task that will run which handles the tasks above
 gulp.task('default', ['post-css', 'cssInject', 'browser-sync'], () => {
-  gulp.watch('./app/assets/styles/**/*.css', ['post-css']);
+  gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
   gulp.watch("./app/dist/styles.min.css", ['cssInject']);
 });
