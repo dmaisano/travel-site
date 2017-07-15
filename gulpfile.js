@@ -3,8 +3,9 @@ let watch = require('gulp-watch');
 let browserSync = require('browser-sync').create();
 let postCSS = require('gulp-postcss');
 let cssImport = require('postcss-import');
-let cssVars = require('postcss-simple-vars');
 let nested = require('postcss-nested');
+let cssVars = require('postcss-simple-vars');
+let mixins = require('postcss-mixins');
 let autoprefixer = require('autoprefixer');
 let cleanCSS = require('gulp-clean-css');
 let rename = require("gulp-rename");
@@ -24,7 +25,7 @@ gulp.task('browser-sync', () => {
 gulp.task('post-css', () => {
   gulp.src('./app/assets/styles/styles.pcss')
     .pipe(plumber())
-    .pipe(postCSS([cssImport, cssVars, nested, autoprefixer]))
+    .pipe(postCSS([cssImport, mixins, cssVars, nested, autoprefixer]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(rename({ suffix: '.min', extname: '.css' }))
     .pipe(gulp.dest('./app/dist'));
