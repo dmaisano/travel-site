@@ -13,7 +13,7 @@ let plumber = require('gulp-plumber');
 
 // Browser-Sync Task with functionality
 gulp.task('browser-sync', () => {
-  browserSync.init(["index.html", "assests/images/**/*.png", "./app/dist/styles/*.css"], {
+  browserSync.init(["index.html", "assests/images/**/*.png", "./app/dist/styles/styles.min.css"], {
     notify: false, // disables browser-sync notifications in top-right corner
     server: {
       baseDir: "./"
