@@ -31,14 +31,7 @@ gulp.task('post-css', () => {
     .pipe(gulp.dest('./app/dist'));
 });
 
-// Task to Inject CSS without browser-sync doing a full refresh (f5)
-gulp.task('cssInject', ['post-css'], () => { // gulp.task('post-css') will run within this task
-  return gulp.src('./app/dist/styles.css')
-    .pipe(browserSync.stream());
-});
-
 // Default task that will run which handles the tasks above
-gulp.task('default', ['post-css', 'cssInject', 'browser-sync'], () => {
+gulp.task('default', ['post-css', 'browser-sync'], () => {
   gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
-  gulp.watch('./app/dist/styles.min.css', ['cssInject']);
 });
