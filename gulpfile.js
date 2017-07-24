@@ -33,5 +33,6 @@ gulp.task('post-css', () => {
 
 // Default task that will run which handles the tasks above
 gulp.task('default', ['post-css', 'browser-sync'], () => {
-  gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
+	gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
+	gulp.watch('./app/assets/styles/styles.pcss', ['post-css']);
 });
