@@ -7,6 +7,14 @@
 			font-size: 3.75rem;
 	}
 
+	&--features {
+		margin-bottom: 2.5rem;
+
+		@mixin atSmall {
+			margin: 0.83em 0;
+		}
+	}
+
 	strong {
 		font-weight: 500;
 	}
@@ -19,13 +27,29 @@
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
-		margin-bottom: 0.6rem;
+		display: none;
 
 		@mixin atSmall {
 			position: relative;
 			top: 8px;
 			display: inline-block;
 			margin-right: 0.5rem;
+			margin-left: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	&__comment {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		display: none;
+
+		@mixin atSmall {
+			position: relative;
+			top: 12px;
+			display: inline-block;
+			margin-right: 1.1rem;
 			margin-left: 0;
 			margin-bottom: 0;
 		}
