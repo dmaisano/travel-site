@@ -10,6 +10,50 @@ let autoprefixer = require('autoprefixer');
 let cleanCSS = require('gulp-clean-css');
 let rename = require("gulp-rename");
 let plumber = require('gulp-plumber');
+let svgSprite = require('gulp-svg-sprite');
+let runSequence = require('run-sequence');
+let del = require('del');
+
+// Template for that createSprite task will use in order
+// to generate a sprite svg and the necessary css file
+var config = {
+	mode: {
+		css: {
+			sprite: 'sprite.svg',
+			render: {
+				css: {
+					template: './app/dist/sprite.hbs'
+				}
+			}
+		}
+	}
+}
+
+// Task that will delete existing sprites to avoid conflicts
+gulp.task('clean-sprite', () => {
+	return del(['./app/dist/sprite', './app/dist/sprite.svg', './app/assets/styles/modules/_sprite.pcss'])
+});
+
+// Task to create a sprite for loading optimization
+gulp.task('create-sprite', ['clean-sprite'], () => {
+	return gulp.src('./app/assets/images/icons/**/*.svg')
+		.pipe(svgSprite(config))
+		.pipe(gulp.dest('./app/dist/sprite'));
+});
+
+// Move and rename sprite.svg to the /dist/ folder
+gulp.task('move-sprite-svg', ['create-sprite'], () => {
+	return gulp.src('./app/dist/sprite/css/**/*.svg')
+		.pipe(rename({basename: 'sprite'}))
+		.pipe(gulp.dest('./app/dist'));
+});
+
+// Move and rename sprite.pcss to the /dist/ folder
+gulp.task('move-sprite-css', ['create-sprite'], () => {
+	return gulp.src('./app/dist/sprite/css/*.css')
+		.pipe(rename({basename: '_sprite', extname: '.pcss'}))
+		.pipe(gulp.dest('./app/assets/styles/modules'));
+});
 
 // Browser-Sync Task with functionality
 gulp.task('browser-sync', () => {
@@ -27,7 +71,7 @@ gulp.task('post-css', () => {
     .pipe(plumber())
     .pipe(postCSS([cssImport, mixins, cssVars, nested, autoprefixer]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(rename({ suffix: '.min', extname: '.css' }))
+    .pipe(rename({suffix: '.min', extname: '.css' }))
     .pipe(gulp.dest('./app/dist'));
 });
 
@@ -36,3 +80,9 @@ gulp.task('default', ['post-css', 'browser-sync'], () => {
 	gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
 	gulp.watch('./app/assets/styles/styles.pcss', ['post-css']);
 });
+
+// Task that will handle the creation and sorting of sprite dependencies
+gulp.task('sprite', () => {
+	runSequence(['clean-sprite', 'create-sprite', 'move-sprite-svg', 'move-sprite-css'], 'post-css');
+});
+// 'post-css' will be run last in the order of the sequence above
