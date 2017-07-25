@@ -55,6 +55,11 @@ gulp.task('move-sprite-css', ['create-sprite'], () => {
 		.pipe(gulp.dest('./app/assets/styles/modules'));
 });
 
+// removes the sprite folder from the /dist/
+gulp.task('end-clean-sprite', ['move-sprite-svg', 'move-sprite-css'], () => {
+	return del('./app/dist/sprite');
+})
+
 // Browser-Sync Task with functionality
 gulp.task('browser-sync', () => {
   browserSync.init(["index.html", "assests/images/**/*.png", "./app/dist/styles/styles.min.css"], {
@@ -83,6 +88,6 @@ gulp.task('default', ['post-css', 'browser-sync'], () => {
 
 // Task that will handle the creation and sorting of sprite dependencies
 gulp.task('sprite', () => {
-	runSequence(['clean-sprite', 'create-sprite', 'move-sprite-svg', 'move-sprite-css'], 'post-css');
+	runSequence(['clean-sprite', 'create-sprite', 'move-sprite-svg', 'move-sprite-css', 'end-clean-sprite'], 'post-css');
 });
 // 'post-css' will be run last in the order of the sequence above
