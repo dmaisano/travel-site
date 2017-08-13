@@ -13,6 +13,7 @@ let plumber = require('gulp-plumber');
 let svgSprite = require('gulp-svg-sprite');
 let runSequence = require('run-sequence');
 let del = require('del');
+let hexrgba = require('postcss-hexrgba');
 
 // Template for that createSprite task will use in order
 // to generate a sprite svg and the necessary css file
@@ -74,7 +75,7 @@ gulp.task('browser-sync', () => {
 gulp.task('post-css', () => {
   gulp.src('./app/assets/styles/styles.pcss')
     .pipe(plumber())
-    .pipe(postCSS([cssImport, mixins, cssVars, nested, autoprefixer]))
+    .pipe(postCSS([cssImport, mixins, cssVars, nested, hexrgba, autoprefixer]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(rename({suffix: '.min', extname: '.css' }))
     .pipe(gulp.dest('./app/dist'));
