@@ -14,6 +14,7 @@ let svgSprite = require('gulp-svg-sprite');
 let runSequence = require('run-sequence');
 let del = require('del');
 let hexrgba = require('postcss-hexrgba');
+let webpack = require('webpack');
 
 // Template for that createSprite task will use in order
 // to generate a sprite svg and the necessary css file
@@ -63,7 +64,7 @@ gulp.task('end-clean-sprite', ['move-sprite-svg', 'move-sprite-css'], () => {
 
 // Browser-Sync Task with functionality
 gulp.task('browser-sync', () => {
-  browserSync.init(["index.html", "assests/images/**/*.png", "./app/dist/styles/styles.min.css"], {
+  browserSync.init(["index.html", "assests/images/**/*.png", "./app/dist/styles/styles.min.css", "./app/dist/app.bundle.js"], {
     notify: false, // disables browser-sync notifications in top-right corner
     server: {
       baseDir: "./"
@@ -81,10 +82,17 @@ gulp.task('post-css', () => {
     .pipe(gulp.dest('./app/dist'));
 });
 
+gulp.task('webpack', () => {
+  webpack(require('./webpack.config.js'), () => {
+    //console.log("Bundled javascript");
+  });
+});
+
 // Default task that will run which handles the tasks above
-gulp.task('default', ['post-css', 'browser-sync'], () => {
-	gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
-	gulp.watch('./app/assets/styles/styles.pcss', ['post-css']);
+gulp.task('default', ['post-css', 'webpack', 'browser-sync'], () => {
+  gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
+  gulp.watch('./app/assets/styles/styles.pcss', ['post-css']);
+  gulp.watch('./app/assets/scripts/*.js', ['webpack']);
 });
 
 // Task that will handle the creation and sorting of sprite dependencies
