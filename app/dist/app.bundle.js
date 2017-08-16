@@ -69,8 +69,6 @@
 
 var $ = __webpack_require__(1);
 
-alert('I am NEPTR')
-
 
 /***/ }),
 /* 1 */

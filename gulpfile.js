@@ -82,9 +82,15 @@ gulp.task('post-css', () => {
     .pipe(gulp.dest('./app/dist'));
 });
 
-gulp.task('webpack', () => {
-  webpack(require('./webpack.config.js'), () => {
-    //console.log("Bundled javascript");
+// Webpack task that will bundle the main app.js file
+gulp.task('webpack', (callback) => {
+  webpack(require('./webpack.config.js'), (err, stats) => {
+    if(err) {
+      console.log(err.toString());
+    }
+
+    console.log(stats.toString());
+    callback();
   });
 });
 
