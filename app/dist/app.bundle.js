@@ -67,11 +67,48 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(1);
+"use strict";
 
+
+var _MobileMenu = __webpack_require__(1);
+
+var _MobileMenu2 = _interopRequireDefault(_MobileMenu);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var menu = new _MobileMenu2.default();
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _jquery = __webpack_require__(2);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MobileMenu = function MobileMenu() {
+  _classCallCheck(this, MobileMenu);
+
+  (0, _jquery2.default)(".site-header__menu-icon").click(function () {
+    console.log("Menu button clicked");
+  });
+};
+
+exports.default = MobileMenu;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!

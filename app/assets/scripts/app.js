@@ -1,1 +1,3 @@
-var $ = require('jquery');
+import MobileMenu from './modules/MobileMenu';
+
+let menu = new MobileMenu();
