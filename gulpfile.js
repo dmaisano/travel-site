@@ -60,7 +60,7 @@ gulp.task('move-sprite-css', ['create-sprite'], () => {
 // removes the sprite folder from the /dist/
 gulp.task('end-clean-sprite', ['move-sprite-svg', 'move-sprite-css'], () => {
 	return del('./app/dist/sprite');
-})
+});
 
 // Browser-Sync Task with functionality
 gulp.task('browser-sync', () => {
