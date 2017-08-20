@@ -2,9 +2,17 @@ import $ from 'jquery';
 
 class MobileMenu {
   constructor() {
-    $(".site-header__menu-icon").click(() => {
-      console.log("Menu button clicked");
-    }); 
+    this.menuIcon = $(".site-header__menu-icon");
+    this.menuContent = $(".site-header__menu-content");
+    this.events();
+  }
+
+  events() {
+    this.menuIcon.click(this.toggleMenu.bind(this));
+  }
+
+  toggleMenu() {
+    this.menuContent.toggleClass("site-header__menu-content--is-visible");
   }
 }
 

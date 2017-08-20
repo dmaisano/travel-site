@@ -98,7 +98,7 @@ gulp.task('webpack', (callback) => {
 gulp.task('default', ['post-css', 'webpack', 'browser-sync'], () => {
   gulp.watch('./app/assets/styles/**/*.pcss', ['post-css']);
   gulp.watch('./app/assets/styles/styles.pcss', ['post-css']);
-  gulp.watch('./app/assets/scripts/*.js', ['webpack']);
+  gulp.watch('./app/assets/scripts/**/*.js', ['webpack']);
 });
 
 // Task that will handle the creation and sorting of sprite dependencies
