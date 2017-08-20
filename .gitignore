@@ -11,6 +11,8 @@
 *.sass-cache
 node_modules/
 .tmp/
+
+# Personal Ignore Extensions
 .stylelintrc
 package-lock.json
 
