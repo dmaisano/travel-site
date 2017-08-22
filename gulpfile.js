@@ -4,10 +4,11 @@ let browserSync = require('browser-sync').create();
 let postCSS = require('gulp-postcss');
 let cssImport = require('postcss-import');
 let mixins = require('postcss-mixins');
-let cssVars = require('postcss-simple-vars');
+let cssVars = require('postcss-simple-vars'); 
 let nested = require('postcss-nested');
 let autoprefixer = require('autoprefixer');
 let cleanCSS = require('gulp-clean-css');
+let conditionals = require('postcss-conditionals');
 let rename = require("gulp-rename");
 let plumber = require('gulp-plumber');
 let svgSprite = require('gulp-svg-sprite');
@@ -76,7 +77,7 @@ gulp.task('browser-sync', () => {
 gulp.task('post-css', () => {
   gulp.src('./app/assets/styles/styles.pcss')
     .pipe(plumber())
-    .pipe(postCSS([cssImport, mixins, cssVars, nested, hexrgba, autoprefixer]))
+    .pipe(postCSS([cssImport, mixins, cssVars, nested, hexrgba, autoprefixer, conditionals]))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(rename({suffix: '.min', extname: '.css' }))
     .pipe(gulp.dest('./app/dist'));
