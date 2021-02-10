@@ -1,0 +1,12 @@
+.btn {
+  @apply bg-primary text-white px-3 py-5 inline-block;
+  text-decoration: none;
+
+  &--orange {
+    @apply bg-accent;
+  }
+
+  &--large {
+    @apply text-lg px-4 py-8;
+  }
+}

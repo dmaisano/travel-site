@@ -10,6 +10,8 @@ import Testimonials from "./components/testimonials";
 function App() {
   return (
     <div className="App">
+      <button className="btn">click me</button>
+
       <Header />
       <Hero />
       <Splash />

@@ -1,0 +1,46 @@
+.large-hero {
+  @apply relative;
+
+  &__text-content {
+    @apply absolute left-0 w-full text-center;
+    transform: translateY(-50%);
+  }
+
+  &__title {
+    @apply font-light text-primary text-lg m-0;
+
+    @media (--breakpoint-sm) {
+      @apply text-3xl;
+    }
+
+    @media (--breakpoint-md) {
+      @apply text-5xl;
+    }
+
+    @media (--breakpoint-lg) {
+      @apply text-7xl;
+    }
+  }
+
+  &__subtitle {
+    @apply font-light text-primary text-lg m-0;
+
+    @media (--breakpoint-sm) {
+      @apply text-5xl;
+    }
+  }
+
+  &__subtitle {
+    @apply font-light text-primary text-lg m-0;
+
+    @media (--breakpoint-sm) {
+      @apply text-5xl;
+    }
+  }
+
+  &__description {
+    @apply font-thin text-white text-3xl mx-auto;
+    max-width: 30rem;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+}

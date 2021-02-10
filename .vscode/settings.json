@@ -1,1 +1,10 @@
-{}
+{
+  "css.validate": false,
+  "scss.validate": false,
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  }
+}
