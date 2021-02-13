@@ -6,5 +6,6 @@
   },
   "emmet.includeLanguages": {
     "postcss": "css"
-  }
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

@@ -1,5 +1,5 @@
+/* modules */
 @import "./modules/_btn.css";
-@import "./modules/_large-hero.css";
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";

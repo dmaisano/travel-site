@@ -1,5 +1,4 @@
-import React from "react";
-import "./App.css";
+// import React from "react";
 import Features from "./components/features";
 import Footer from "./components/footer";
 import Header from "./components/header";

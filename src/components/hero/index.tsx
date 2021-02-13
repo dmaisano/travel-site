@@ -1,5 +1,6 @@
 import React from "react";
-import { PUBLIC_URL } from "../constants";
+import { PUBLIC_URL } from "../../constants";
+import "./hero.css";
 
 const Hero: React.FC = () => {
   return (

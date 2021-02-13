@@ -1,5 +1,5 @@
 import React from "react";
-import { PUBLIC_URL } from "../constants";
+import { PUBLIC_URL } from "../../constants";
 
 const Testimonials: React.FC = () => {
   return (

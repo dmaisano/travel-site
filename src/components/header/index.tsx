@@ -1,5 +1,5 @@
 import React from "react";
-import { PUBLIC_URL } from "../constants";
+import { PUBLIC_URL } from "../../constants";
 
 const Header: React.FC = () => {
   console.log({ PUBLIC_URL });
