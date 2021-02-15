@@ -1,0 +1,12 @@
+/* #testimonials #bg {
+  display: block;
+  background-image: none;
+  background-color: #e2d;
+} */
+
+@media (min-width: 1200px) {
+  /* #testimonials #bg {
+    background: top center no-repeat;
+    background-size: cover;
+  } */
+}

@@ -1,0 +1,12 @@
+.wrapper {
+  @apply overflow-hidden px-5 mx-auto;
+  max-width: 1236px;
+
+  &--medium {
+    max-width: 976px;
+  }
+
+  &--narrow {
+    max-width: 470px;
+  }
+}

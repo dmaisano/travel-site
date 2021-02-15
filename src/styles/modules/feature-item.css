@@ -1,0 +1,24 @@
+.feature-item {
+  @apply relative pb-10;
+
+  @media (--breakpoint-sm) {
+    @apply pl-24;
+  }
+
+  &__icon {
+    display: block;
+    margin: 0 auto;
+
+    @media (--breakpoint-sm) {
+      @apply absolute l-0;
+    }
+  }
+
+  &__title {
+    @apply text-2xl font-light mb-3 text-center;
+
+    @media (--breakpoint-sm) {
+      @apply text-left mt-4 text-3xl;
+    }
+  }
+}

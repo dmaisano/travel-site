@@ -9,7 +9,8 @@ import Testimonials from "./components/testimonials";
 function App() {
   return (
     <div className="App">
-      <button className="btn">click me</button>
+      {/* <button className="btn--large">click me</button> */}
+      {/* <a href="#">link</a> */}
 
       <Header />
       <Hero />

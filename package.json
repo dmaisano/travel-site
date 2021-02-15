@@ -26,7 +26,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "craco start",
+    "start": "set BROWSER=NONE && craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"

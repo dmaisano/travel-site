@@ -1,14 +1,15 @@
-/* modules */
-@import "./modules/_btn.css";
-
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "normalize.css";
 
-@custom-media --breakpoint-sm (min-width: 530px);
-@custom-media --breakpoint-md (min-width: 800px);
-@custom-media --breakpoint-lg (min-width: 1200px);
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -28,4 +29,8 @@ code {
 img {
   max-width: 100%;
   height: auto;
+}
+
+a {
+  @apply text-accent no-underline;
 }

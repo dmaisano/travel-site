@@ -7,6 +7,10 @@
   }
 
   &--large {
-    @apply text-lg px-4 py-8;
+    @apply px-4 py-8;
+
+    @media (--breakpoint-sm) {
+      @apply text-lg;
+    }
   }
 }
