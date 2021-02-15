@@ -5,12 +5,12 @@ import "./testimonials.css";
 const Testimonials: React.FC = () => {
   return (
     <div id="testimonials" className="relative">
-      {/* <img
+      <img
         id="bg"
         className="sm:hidden lg:block absolute z-0"
         src={`${PUBLIC_URL}/assets/images/testimonials-bg.jpg`}
         alt=""
-      /> */}
+      />
 
       <div id="bg" className="absolute h-full w-full"></div>
 

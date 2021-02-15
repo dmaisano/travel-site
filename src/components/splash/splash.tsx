@@ -1,4 +1,5 @@
 import React from "react";
+import { PUBLIC_URL } from "../../constants";
 
 const Splash: React.FC = () => {
   return (
@@ -8,10 +9,13 @@ const Splash: React.FC = () => {
         Ever since, we&rsquo;ve been working to make travel better for everyone.
       </h3>
       <img
-        src="assets/images/first-trip.jpg"
+        src={`${PUBLIC_URL}/assets/images/first-trip.jpg`}
         alt="Couple walking down a street."
       />
-      <img src="assets/images/our-start.jpg" alt="Our founder, Jane Doe" />
+      <img
+        src={`${PUBLIC_URL}/assets/images/our-start.jpg`}
+        alt="Our founder, Jane Doe"
+      />
       <h2>Here&rsquo;s how we got started&hellip;</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
