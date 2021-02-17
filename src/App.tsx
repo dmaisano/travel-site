@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import Features from "./components/features";
 import Footer from "./components/footer";
 import Header from "./components/header";
@@ -13,11 +13,11 @@ function App() {
       {/* <a href="#">link</a> */}
 
       <Header />
-      <Hero />
+      {/* <Hero />
       <Splash />
       <Features />
       <Testimonials />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

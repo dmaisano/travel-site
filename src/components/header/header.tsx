@@ -1,29 +1,52 @@
 import React, { useState } from "react";
-import { PUBLIC_URL } from "../../constants";
+import { ClearViewEscapes } from "../svg/clear-view-escapes";
+import "./hamburger.css";
 import "./header.css";
 
 const Header: React.FC = () => {
-  const [isDark, setDark] = useState(false);
-
-  const toggleColor = () => {
-    setDark(!isDark);
-  };
+  const [toggled, toggleHamburger] = useState(false);
 
   return (
     <header
-      className="absolute py-3 w-full z-10"
+      className="absolute w-full"
       style={{
-        backgroundColor: isDark
-          ? `rgba(23, 51, 72, .85)`
-          : `rgba(47, 85, 114, .3)`,
+        backgroundColor: toggled ? `rgba(47, 85, 114, .55)` : `inherit`,
       }}
     >
-      <img
-        onClick={toggleColor}
-        src={`${PUBLIC_URL}/assets/images/icons/clear-view-escapes.svg`}
-        alt=""
-      />
-      <a href="/">Get in Touch</a>
+      <div
+        id="mobile-menu"
+        className={`block md:hidden absolute top-0 right-0 p-4`}
+      >
+        <button
+          onClick={() => {
+            toggleHamburger(!toggled);
+          }}
+          className="flex items-center focus:outline-none ml-auto"
+        >
+          <div className={`nav-icon ${toggled ? ` nav-icon-toggled` : ``}`}>
+            <div></div>
+          </div>
+        </button>
+      </div>
+
+      <div className="grid grid-cols-3">
+        <div
+          id="logo"
+          className="bg-primary p-4 mx-auto"
+          style={{
+            gridColumn: `1 / 4`,
+            width: `min-content`,
+          }}
+        >
+          <ClearViewEscapes />
+        </div>
+      </div>
+
+      <div id="links" className="grid grid-cols-3">
+        <div className="bg-gray-500 h-12">Text</div>
+      </div>
+
+      {/* <a href="/">Get in Touch</a>
       <nav>
         <ul>
           <li>
@@ -36,7 +59,7 @@ const Header: React.FC = () => {
             <a href="#testimonials">Testimonials</a>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </header>
   );
 };
