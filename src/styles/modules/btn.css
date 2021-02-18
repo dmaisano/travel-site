@@ -1,16 +1,18 @@
 .btn {
-  @apply bg-primary text-white px-3 py-5 inline-block;
+  @apply bg-primary px-5 py-3;
+  color: #fff;
   text-decoration: none;
+  display: inline-block;
 
   &--orange {
     @apply bg-accent;
   }
 
   &--large {
-    @apply px-4 py-8;
+    padding: 1.1rem 1.9rem;
 
-    @media (--breakpoint-sm) {
-      @apply text-lg;
+    @media (min-width: 530px) {
+      font-size: 1.25rem;
     }
   }
 }

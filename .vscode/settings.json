@@ -1,5 +1,11 @@
 {
-  "css.validate": true,
-  "scss.validate": false,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "css.validate": false,
+  "scss.validate": false
+  // "files.associations": {
+  //   "*.css": "postcss"
+  // },
+  // "emmet.includeLanguages": {
+  //   "postcss": "css"
+  // }
 }

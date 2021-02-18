@@ -3,6 +3,8 @@
 @tailwind utilities;
 @import "normalize.css";
 
+@import "./modules/btn.css";
+
 * {
   box-sizing: border-box;
 }
