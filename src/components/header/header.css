@@ -2,22 +2,54 @@ header {
   position: absolute;
   transition: background-color 0.3s ease-out;
 
+  &.expanded {
+    background-color: rgba(47, 85, 114, 0.55);
+  }
+
   .grid {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+
     .logo {
       grid-area: logo;
       width: fit-content;
+      @apply text-lg leading-none px-8 py-5;
+
+      span {
+        @apply text-2xl leading-none;
+      }
+    }
+
+    .logo {
+      margin-bottom: 1rem;
     }
 
     #links {
       grid-area: links;
-
-      & > *:not(:first-child) {
-        @apply text-white;
-      }
+      display: grid;
+      grid-template-columns: 0.5fr repeat(3, auto) 0.5fr;
+      column-gap: 8px;
+      row-gap: 10px;
+      grid-template-areas:
+        ". contact contact contact ."
+        ". beginning features testimonials .";
+      height: auto;
 
       & > *:not(:last-child) {
-        padding-right: 1.25rem;
+        font-weight: 300;
+        padding: 5px 8px;
+        font-size: 0.8rem;
+        background-color: rgba(47, 85, 114, 0.5);
       }
+    }
+
+    .links--hidden {
+      /* display none will not work with the transition */
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
     }
 
     #links--expanded {
@@ -38,6 +70,8 @@ header {
 
     #contact {
       grid-area: contact;
+      width: fit-content;
+      margin: auto;
     }
   }
 }
@@ -48,14 +82,36 @@ header {
     background-color: rgba(47, 85, 114, 0.3);
 
     .grid {
+      display: grid;
       grid-template-columns: 0.25fr auto 1fr auto 0.25fr;
       grid-auto-rows: minmax(3.75rem, auto);
       grid-template-areas: ". logo . links .";
+      padding-bottom: 0 !important;
+    }
+
+    .logo {
+      @apply px-6 py-2 !important;
+      margin-bottom: 0 !important;
     }
 
     .logo--expanded {
-      /* width: fit-content;
-      transform: scale(1.5) translateY(15%); */
+    }
+
+    #links {
+      display: flex !important;
+      opacity: 1;
+
+      & > *:not(:first-child) {
+        @apply text-white;
+      }
+
+      & > *:not(:last-child) {
+        font-weight: normal !important;
+        padding: 0 !important;
+        padding-right: 1.25rem !important;
+        font-size: inherit !important;
+        background-color: transparent !important;
+      }
     }
   }
 }

@@ -1,43 +1,65 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 import Hamburger from "./hamburger";
 import "./header.css";
 
 const Header: React.FC = () => {
-  const [toggled, toggleHamburger] = useState(false);
+  const [{ expandedLogo, toggled }, setState] = useState({
+    expandedLogo: false,
+    toggled: false,
+  });
+
+  const toggleHamburger = () => {
+    setState({
+      expandedLogo,
+      toggled: !toggled,
+    });
+  };
 
   return (
-    <header className="w-full z-10">
+    <header
+      className={classNames(`w-full z-10`, {
+        expanded: toggled,
+      })}
+    >
       <div
         id="mobile-menu"
-        className={`block md:hidden absolute top-0 right-0 p-4`}
+        className={`z-20 block md:hidden absolute top-0 right-0 p-4`}
       >
-        <Hamburger
-          toggled={toggled}
-          toggleHamburger={() => {
-            toggleHamburger(!toggled);
-          }}
-        />
+        <Hamburger toggled={toggled} toggleHamburger={toggleHamburger} />
       </div>
 
       <div className="relative grid w-full items-center">
         <div
-          id="logo"
-          className="logo logo--expanded bg-primary text-white text-center px-6 py-2 leading-none"
+          className={classNames(
+            `logo bg-primary text-white text-center leading-none`,
+            {
+              "logo--expanded": expandedLogo,
+            },
+          )}
         >
           Clear View <span className="block text-xl font-bold">Escapes</span>
         </div>
 
-        <div id="links" className="flex">
-          <button id="beginning" className="text-center text-accent">
+        <div
+          id="links"
+          className={classNames({
+            "links--hidden": !toggled,
+          })}
+        >
+          <button
+            id="beginning"
+            className="text-center text-white md:text-accent"
+          >
             Our Beginning
           </button>
-          <button id="features" className="text-center">
+          <button id="features" className="text-center text-white">
             Features
           </button>
-          <button id="testimonials" className="text-center">
+          <button id="testimonials" className="text-center text-white">
             Testimonials
           </button>
-          <button id="contact" className="text-center btn">
+          <button id="contact" className="btn text-center text-white">
             Get in Touch
           </button>
         </div>
