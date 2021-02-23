@@ -1,0 +1,9 @@
+#hero {
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background-image 0.2s ease-in-out;
+
+  p#description {
+    text-shadow: 2px 2px 0 rgb(0 0 0 / 10%);
+  }
+}

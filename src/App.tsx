@@ -13,11 +13,11 @@ function App() {
       {/* <a href="#">link</a> */}
 
       <Header />
-      {/* <Hero />
-      <Splash />
-      <Features />
-      <Testimonials />
-      <Footer /> */}
+      <Hero />
+      {/* <Splash /> */}
+      {/* <Features /> */}
+      {/* <Testimonials /> */}
+      {/* <Footer /> */}
     </div>
   );
 }

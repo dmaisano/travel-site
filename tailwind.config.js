@@ -12,6 +12,9 @@ module.exports = {
         primary: "#2f5572",
         accent: "#d59541",
       },
+      borderWidth: {
+        10: "10px",
+      },
     },
   },
   variants: {

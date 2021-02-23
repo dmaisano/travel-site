@@ -1,23 +1,78 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PUBLIC_URL } from "../../constants";
+import heroSmaller from "./hero--smaller.jpg";
+import heroSmall from "./hero--small.jpg";
+import heroMedium from "./hero--medium.jpg";
+import heroLarge from "./hero--large.jpg";
 import "./hero.css";
 
 const Hero: React.FC = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  let imageUrl = heroSmaller;
+
+  if (windowWidth >= 640) {
+    imageUrl = heroSmall;
+  }
+  if (windowWidth >= 990) {
+    imageUrl = heroMedium;
+  }
+  if (windowWidth >= 1380) {
+    imageUrl = heroLarge;
+  }
+
+  // ? reference: https://itnext.io/responsive-background-images-using-react-hooks-941af365ea1f
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
-    <div className="large-hero">
-      <img src={`${PUBLIC_URL}/assets/images/hero.jpg`} alt="" />
-      <div className="large-hero__text-content">
-        <h1 className="large-hero__title">Your clarity.</h1>
-        <h2 className="large-hero__subtitle">One trip away.</h2>
-        <p className="large-hero__description">
+    <div
+      id="hero"
+      className="relative pt-32 pb-16 border-b-10 border-primary"
+      style={{
+        backgroundImage: `url(${imageUrl})`,
+      }}
+    >
+      {/* <img className="" src={imageUrl} alt="hero" /> */}
+      <div className="z-10 w-full text-center">
+        <h1 className="text-primary font-light text-4xl sm:text-7xl pb">
+          Your Clarity.
+        </h1>
+        <h2 className="text-primary font-light text-2xl sm:text-5xl md:mb-8">
+          One trip away.
+        </h2>
+        <p
+          id="description"
+          className="text-white font-thin text-lg md:text-3xl w-3/4 md:w-2/3 lg:w-1/4 my-4 mx-auto md:mb-8"
+        >
+          We create soul restoring journeys that inspire you to be you.
+        </p>
+        {/* <a className="" href="#">Get Started Today</a> */}
+        <button className="btn btn--orange btn--large">
+          Get Started Today
+        </button>
+      </div>
+
+      {/* <div className="">
+        <h1 className="">Your clarity.</h1>
+        <h2 className="">One trip away.</h2>
+        <p className="">
           We create soul restoring journeys that inspire you to be you.
         </p>
         <p>
-          <a href="#" className="btn btn--orange btn--large">
+          <a href="#" className="">
             Get Started Today
           </a>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

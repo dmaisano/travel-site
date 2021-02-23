@@ -18,13 +18,14 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={classNames(`w-full z-10`, {
-        expanded: toggled,
+      className={classNames(`w-full absolute md:fixed`, {
+        "expanded z-50": toggled,
+        "z-10": !toggled,
       })}
     >
       <div
         id="mobile-menu"
-        className={`z-20 block md:hidden absolute top-0 right-0 p-4`}
+        className={`z-50 block md:hidden absolute top-0 right-0 p-4`}
       >
         <Hamburger toggled={toggled} toggleHamburger={toggleHamburger} />
       </div>
@@ -32,7 +33,7 @@ const Header: React.FC = () => {
       <div className="relative grid w-full items-center">
         <div
           className={classNames(
-            `logo bg-primary text-white text-center leading-none`,
+            `logo z-50 bg-primary text-white text-center leading-none`,
             {
               "logo--expanded": expandedLogo,
             },
@@ -47,10 +48,7 @@ const Header: React.FC = () => {
             "links--hidden": !toggled,
           })}
         >
-          <button
-            id="beginning"
-            className="text-center text-white md:text-accent"
-          >
+          <button id="beginning" className="text-center text-white">
             Our Beginning
           </button>
           <button id="features" className="text-center text-white">
