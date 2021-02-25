@@ -1,0 +1,11 @@
+#splash {
+  background-color: #fff;
+
+  p {
+    @apply font-light leading-6 mb-7;
+  }
+
+  a {
+    @apply underline font-bold;
+  }
+}

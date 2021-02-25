@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { PUBLIC_URL } from "../../constants";
-import heroSmaller from "./hero--smaller.jpg";
-import heroSmall from "./hero--small.jpg";
-import heroMedium from "./hero--medium.jpg";
 import heroLarge from "./hero--large.jpg";
+import heroMedium from "./hero--medium.jpg";
+import heroSmall from "./hero--small.jpg";
+import heroSmaller from "./hero--smaller.jpg";
 import "./hero.css";
 
 const Hero: React.FC = () => {

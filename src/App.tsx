@@ -14,7 +14,7 @@ function App() {
 
       <Header />
       <Hero />
-      {/* <Splash /> */}
+      <Splash />
       {/* <Features /> */}
       {/* <Testimonials /> */}
       {/* <Footer /> */}
