@@ -21,12 +21,12 @@ const Features: React.FC = () => {
         </h2>
       </div>
 
-      <div id="feature-items" className="flex flex-wrap">
+      <div id="feature-items" className="w-full flex flex-wrap">
         <div id="feature-item">
-          <div className="sm:w-1/5">
+          <div className="sm:w-1/5 md:w-1/6 md:mr-4">
             <img src={`${PUBLIC_URL}/assets/images/icons/rain.svg`} alt="" />
           </div>
-          <div className="sm:w-4/5">
+          <div className="sm:w-4/5 md:w-5/6">
             <h3>We&rsquo;ll Watch the Weather</h3>
             <p>
               Download our app and we&rsquo;ll send you a notice if it&rsquo;s
@@ -38,10 +38,10 @@ const Features: React.FC = () => {
         </div>
 
         <div id="feature-item">
-          <div className="sm:w-1/5">
+          <div className="sm:w-1/5 md:w-1/6 md:mr-4">
             <img src={`${PUBLIC_URL}/assets/images/icons/globe.svg`} alt="" />
           </div>
-          <div className="sm:w-4/5">
+          <div className="sm:w-4/5 md:w-5/6">
             <h3>Global Guides</h3>
             <p>
               We&rsquo;ve scoured the entire planet for the best retreats and
@@ -52,10 +52,10 @@ const Features: React.FC = () => {
         </div>
 
         <div id="feature-item">
-          <div className="sm:w-1/5">
+          <div className="sm:w-1/5 md:w-1/6 md:mr-4">
             <img src={`${PUBLIC_URL}/assets/images/icons/wifi.svg`} alt="" />
           </div>
-          <div className="sm:w-4/5">
+          <div className="sm:w-4/5 md:w-5/6">
             <h3>Wi-Fi Waypoints</h3>
             <p>
               We only send you on trips to places we can personally vouch for as
@@ -66,10 +66,10 @@ const Features: React.FC = () => {
         </div>
 
         <div id="feature-item">
-          <div className="sm:w-1/5">
+          <div className="sm:w-1/5 md:w-1/6 md:mr-4">
             <img src={`${PUBLIC_URL}/assets/images/icons/fire.svg`} alt="" />
           </div>
-          <div className="sm:w-4/5">
+          <div className="sm:w-4/5 md:w-5/6">
             <h3>Survival Kit</h3>
             <p>
               Everytime you book an escape with us we send you a survival kit

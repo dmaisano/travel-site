@@ -12,7 +12,7 @@
     }
 
     h3 {
-      @apply text-white text-center text-2xl;
+      @apply text-white text-center text-2xl font-light;
       margin-top: 0.7em;
       margin-bottom: 0.8rem;
     }
@@ -44,6 +44,27 @@
 
       p {
         @apply text-lg;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  #features {
+    #feature-item:nth-child(odd) {
+      margin-right: 7.5%;
+    }
+
+    #feature-item {
+      width: 46.25%;
+
+      img {
+      }
+
+      h3 {
+      }
+
+      p {
       }
     }
   }

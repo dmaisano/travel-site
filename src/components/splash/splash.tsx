@@ -30,7 +30,7 @@ const Splash: React.FC = () => {
   }, []);
 
   return (
-    <div id="splash" className="wrapper py-10 px-4">
+    <div id="splash" className="wrapper pt-10 pb-5 px-4">
       <h2 className="text-primary text-center text-3xl font-thin mb-6 md:mb-8 lg:mb-12">
         The first trip we planned{" "}
         <span className="font-normal">was our own.</span>
