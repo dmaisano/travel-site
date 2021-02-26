@@ -4,6 +4,7 @@
 @import "normalize.css";
 
 @import "./modules/btn.css";
+@import "./modules/wapper.css";
 
 * {
   box-sizing: border-box;

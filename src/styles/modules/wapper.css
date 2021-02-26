@@ -1,5 +1,5 @@
 .wrapper {
-  @apply overflow-hidden px-5 mx-auto;
+  @apply overflow-hidden p-5 mx-auto;
   max-width: 1236px;
 
   &--medium {

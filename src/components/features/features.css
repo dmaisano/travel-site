@@ -1,0 +1,23 @@
+#features {
+  #feature-item:not(:last-child) {
+    padding-bottom: 40px;
+  }
+
+  #feature-item {
+    width: full;
+
+    img {
+      margin: auto;
+    }
+
+    h3 {
+      @apply text-white text-center text-2xl;
+      margin-top: 0.7em;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      @apply text-white font-light leading-6;
+    }
+  }
+}

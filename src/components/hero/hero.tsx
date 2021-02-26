@@ -35,13 +35,13 @@ const Hero: React.FC = () => {
   return (
     <div
       id="hero"
-      className="relative pt-32 pb-16 border-b-10 border-primary"
+      className="wrapper relative pt-32 pb-16 border-b-10 border-primary"
       style={{
         backgroundImage: `url(${imageUrl})`,
       }}
     >
       {/* <img className="" src={imageUrl} alt="hero" /> */}
-      <div className="z-10 w-full text-center">
+      <div className="z-10 text-center">
         <h1 className="text-primary font-light text-4xl sm:text-7xl pb">
           Your Clarity.
         </h1>
