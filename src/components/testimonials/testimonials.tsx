@@ -2,9 +2,13 @@ import React from "react";
 import { PUBLIC_URL } from "../../constants";
 import "./testimonials.css";
 
-const Testimonials: React.FC = () => {
+type TestimonialsProps = {
+  testimonialsRef: any;
+};
+
+const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
   return (
-    <div id="testimonials" className="relative">
+    <div ref={testimonialsRef} id="testimonials" className="">
       <img
         id="bg"
         className="sm:hidden lg:block absolute z-0"

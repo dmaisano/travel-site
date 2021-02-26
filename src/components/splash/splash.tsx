@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import firstTrip from "./first-trip.jpg";
 import ourStartLandscape from "./our-start-landscape.jpg";
 import ourStartPortrait from "./our-start-portrait.jpg";
 import ourStart from "./our-start.jpg";
 import "./splash.css";
 
-const Splash: React.FC = () => {
+type SplashProps = {
+  windowWidth: number;
+  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
+  splashRef: any;
+};
+
+const Splash: React.FC<SplashProps> = ({ splashRef }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   let ourStartUrl = ourStartLandscape;
 
@@ -30,7 +36,7 @@ const Splash: React.FC = () => {
   }, []);
 
   return (
-    <div id="splash" className="wrapper pt-10 pb-5 px-4">
+    <div ref={splashRef} id="splash" className="wrapper pt-10 pb-5 px-4">
       <h2 className="text-primary text-center text-3xl font-thin mb-6 md:mb-8 lg:mb-12">
         The first trip we planned{" "}
         <span className="font-normal">was our own.</span>

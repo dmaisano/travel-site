@@ -77,6 +77,11 @@ header {
 }
 
 @media (min-width: 800px) {
+  .header-dark {
+    /* transition: background-color 0.3s ease-out; */
+    background-color: rgba(23, 51, 72, 0.85);
+  }
+
   header {
     position: fixed;
     background-color: rgba(47, 85, 114, 0.3);

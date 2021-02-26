@@ -2,9 +2,13 @@ import React from "react";
 import { PUBLIC_URL } from "../../constants";
 import "./features.css";
 
-const Features: React.FC = () => {
+type FeaturesProps = {
+  featuresRef: any;
+};
+
+const Features: React.FC<FeaturesProps> = ({ featuresRef }) => {
   return (
-    <div id="features" className="wrapper bg-primary py-16">
+    <div ref={featuresRef} id="features" className="wrapper bg-primary py-16">
       <div
         id="title"
         className="w-full mb-8 sm:mb-12 sm:flex sm:justify-center sm:items-center"
