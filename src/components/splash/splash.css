@@ -9,3 +9,23 @@
     @apply underline font-bold;
   }
 }
+
+@media (min-width: 530px) {
+  #splash {
+    h2 {
+      font-size: 2.875rem;
+    }
+
+    p {
+      @apply text-lg;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  #splash {
+    img:nth-child(1) {
+      align-self: flex-start;
+    }
+  }
+}

@@ -30,51 +30,59 @@ const Splash: React.FC = () => {
   }, []);
 
   return (
-    <div id="splash" className="pt-10 px-4 mx-auto max-w-screen-lg">
-      <h2 className="text-primary text-center text-3xl font-thin mb-4">
+    <div id="splash" className="wrapper py-10 px-4">
+      <h2 className="text-primary text-center text-3xl font-thin mb-6 md:mb-8 lg:mb-12">
         The first trip we planned{" "}
         <span className="font-normal">was our own.</span>
       </h2>
-      <h3 className="text-accent text-center text-xl font-thin mb-8">
+      <h3 className="text-accent text-center text-xl sm:text-3xl font-thin mb-8 lg:max-w-md lg:mx-auto">
         Ever since, we&rsquo;ve been working to make travel{" "}
         <span className="font-normal">better for everyone.</span>
       </h3>
-      <img
-        className="mb-4"
-        src={firstTrip}
-        alt="Couple walking down a street."
-      />
-      <img
-        className="mb-4 md:mb-0"
-        src={ourStartUrl}
-        alt="Our founder, Jane Doe"
-      />
-      <h2 className="text-primary font-light text-3xl mb-6">
-        Here&rsquo;s how we got started&hellip;
-      </h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, <a href="#">quis nostrud exercitation</a> ullamco laboris nisi
-        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Duis aute irure dolor in <strong>reprehenderit in</strong> voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-      </p>
-      <p>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        velit esse cillum <strong>dolore eu fugiat.</strong>
-      </p>
+      <div className="w-full flex justify-items-center">
+        <img
+          className="mb-8"
+          src={firstTrip}
+          alt="Couple walking down a street."
+        />
+      </div>
+      <div id="founder" className="block md:flex lg:max-w-screen-xl mx-auto">
+        <img
+          className="mb-8 md:mb-0 w-auto md:w-1/3 md:mr-8"
+          src={ourStartUrl}
+          alt="Our founder, Jane Doe"
+        />
+        <div className="w-auto md:w-2/3">
+          <h2 className="text-primary font-light text-3xl mb-6">
+            Here&rsquo;s how we got started&hellip;
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, <a href="#">quis nostrud exercitation</a> ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.
+          </p>
+          <p>
+            Duis aute irure dolor in <strong>reprehenderit in</strong> voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum velit esse cillum{" "}
+            <strong>dolore eu fugiat.</strong>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

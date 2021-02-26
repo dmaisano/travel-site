@@ -45,12 +45,12 @@ const Hero: React.FC = () => {
         <h1 className="text-primary font-light text-4xl sm:text-7xl pb">
           Your Clarity.
         </h1>
-        <h2 className="text-primary font-light text-2xl sm:text-5xl md:mb-8">
+        <h2 className="text-primary font-light text-2xl sm:text-5xl sm:mb-4 md:mb-8">
           One trip away.
         </h2>
         <p
           id="description"
-          className="text-white font-thin text-lg md:text-3xl w-3/4 md:w-2/3 lg:w-1/4 my-4 mx-auto md:mb-8"
+          className="text-white font-thin text-lg sm:text-3xl max-w-md my-4 mx-auto md:mb-8"
         >
           We create soul restoring journeys that inspire you to be you.
         </p>
