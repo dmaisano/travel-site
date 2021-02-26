@@ -39,9 +39,9 @@ const Splash: React.FC = () => {
         Ever since, we&rsquo;ve been working to make travel{" "}
         <span className="font-normal">better for everyone.</span>
       </h3>
-      <div className="w-full flex justify-items-center">
+      <div className="w-full mx-auto text-center mb-8">
         <img
-          className="mb-8"
+          className="mx-auto"
           src={firstTrip}
           alt="Couple walking down a street."
         />
