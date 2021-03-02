@@ -11,14 +11,14 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
     <div ref={testimonialsRef} id="testimonials" className="">
       <img
         id="bg"
-        className="sm:hidden lg:block absolute z-0"
+        className="sm:hidden lg:block absolute"
         src={`${PUBLIC_URL}/assets/images/testimonials-bg.jpg`}
         alt=""
       />
 
       <div id="bg" className="absolute h-full w-full"></div>
 
-      <div className="relative z-10">
+      <div className="relative">
         <img src={`${PUBLIC_URL}/assets/images/icons/comment.svg`} alt="" />
         <h2>Real Testimonials</h2>
 

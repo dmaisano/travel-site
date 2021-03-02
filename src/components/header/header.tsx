@@ -1,44 +1,73 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useThrottledFn, useWindowScroll } from "beautiful-react-hooks";
 import classNames from "classnames";
+import { head } from "lodash";
+import React, { useEffect, useRef, useState } from "react";
+import { calcScroll } from "./calculate-scroll";
 import Hamburger from "./hamburger";
 import "./header.css";
 
 type HeaderProps = {
-  scrollPos: number;
+  windowWidth: number;
+  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
   splashRef: React.RefObject<HTMLDivElement>;
   featuresRef: React.RefObject<HTMLDivElement>;
   testimonialsRef: React.RefObject<HTMLDivElement>;
 };
 
 const Header: React.FC<HeaderProps> = ({
-  scrollPos,
-  splashRef,
   featuresRef,
+  setWindowWidth,
+  splashRef,
   testimonialsRef,
+  windowWidth,
 }) => {
   const headerRef = useRef<HTMLElement>(null);
-  let headerHeight: number | undefined = 0;
-
-  const [{ expandedLogo, toggled }, setState] = useState({
+  const [state, setState] = useState({
     expandedLogo: false,
     toggled: false,
+    headerHeight: headerRef.current?.clientHeight,
+    previousScrollY: window.scrollY,
+    visisbleSection: "splash",
   });
 
   const toggleHamburger = () => {
     setState({
-      expandedLogo,
-      toggled: !toggled,
+      ...state,
+      toggled: !state.toggled,
     });
   };
 
+  const onWindowScroll = useThrottledFn(() => {
+    const scrollY = window.scrollY;
+    const scrollDirection =
+      window.scrollY > state.previousScrollY ? "down" : "up";
+
+    calcScroll(headerRef, scrollY, scrollDirection, [
+      splashRef,
+      featuresRef,
+      testimonialsRef,
+    ]);
+
+    setState({ ...state, previousScrollY: scrollY });
+  }, 200);
+
   useEffect(() => {
-    headerHeight = headerRef.current?.getBoundingClientRect().height;
+    if (headerRef.current) {
+      setState({
+        ...state,
+        headerHeight: headerRef.current.clientHeight,
+      });
+    }
   }, []);
+
+  useWindowScroll(onWindowScroll);
+  useEffect(() => {
+    return () => onWindowScroll.cancel();
+  });
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
-      const offset =
-        ref.current.getBoundingClientRect().y - (headerHeight || 0);
+      const offset = ref.current.offsetTop - (state.headerHeight || 0);
 
       window.scrollTo({ top: offset, behavior: "smooth" });
     }
@@ -48,16 +77,16 @@ const Header: React.FC<HeaderProps> = ({
     <header
       ref={headerRef}
       className={classNames(`w-full absolute md:fixed`, {
-        "z-50": toggled,
-        "z-10": !toggled,
-        "header-dark": scrollPos > 0,
+        "z-50": state.toggled,
+        "z-10": !state.toggled,
+        "header-dark": window.scrollY > 0,
       })}
     >
       <div
         id="mobile-menu"
         className={`z-50 block md:hidden absolute top-0 right-0 p-4`}
       >
-        <Hamburger toggled={toggled} toggleHamburger={toggleHamburger} />
+        <Hamburger toggled={state.toggled} toggleHamburger={toggleHamburger} />
       </div>
 
       <div className="relative grid w-full items-center">
@@ -65,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({
           className={classNames(
             `logo z-50 bg-primary text-white text-center leading-none`,
             {
-              "logo--expanded": expandedLogo,
+              "logo--expanded": state.expandedLogo,
             },
           )}
         >
@@ -75,14 +104,14 @@ const Header: React.FC<HeaderProps> = ({
         <div
           id="links"
           className={classNames({
-            "links--hidden": !toggled,
+            "links--hidden": !state.toggled,
           })}
         >
           <button
             onClick={() => {
               scrollToRef(splashRef);
             }}
-            id="beginning"
+            id="splash"
             className="text-center text-white"
           >
             Our Beginning
