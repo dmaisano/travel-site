@@ -1,33 +1,32 @@
 import React from "react";
 import { PUBLIC_URL } from "../../constants";
 import "./testimonials.css";
+import testimonialsBg from "./testimonials-bg.jpg";
 
 type TestimonialsProps = {
   testimonialsRef: any;
+  windowWidth: number;
 };
 
-const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
+const Testimonials: React.FC<TestimonialsProps> = ({
+  testimonialsRef,
+  windowWidth,
+}) => {
   return (
     <div
       ref={testimonialsRef}
       id="testimonials"
       className="page-section relative"
+      style={{
+        backgroundImage: windowWidth >= 1010 ? `url(${testimonialsBg})` : ``,
+      }}
     >
-      {/* <img
-        id="bg"
-        className="sm:hidden lg:block absolute"
-        src={`${PUBLIC_URL}/assets/images/testimonials-bg.jpg`}
-        alt=""
-      /> */}
-
-      {/* <div id="bg" className="absolute h-full w-full"></div> */}
       <div
         id="title"
         className="flex flex-wrap md:flex-nowrap items-center justify-center w-full mb-32"
       >
         <div className="mb-4 md:mb-0 md:mr-4">
           <svg
-            // className="w-full mx-auto md:m-0 mb-4"
             data-name="Layer 1"
             xmlns="http://www.w3.org/2000/svg"
             width="64"
@@ -47,7 +46,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
       </div>
 
       <div id="items" className="flex flex-wrap w-full">
-        <div id="testimonial">
+        <div id="testimonial" className="w-auto lg:w-1/3">
           <div id="testimonial__photo">
             <img
               src={`${PUBLIC_URL}/assets/images/testimonial-jane.jpg`}
@@ -66,7 +65,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
           </p>
         </div>
 
-        <div id="testimonial">
+        <div id="testimonial" className="w-auto lg:w-1/3">
           <div id="testimonial__photo">
             <img
               src={`${PUBLIC_URL}/assets/images/testimonial-john.jpg`}
@@ -83,7 +82,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
           </p>
         </div>
 
-        <div id="testimonial">
+        <div id="testimonial" className="w-auto lg:w-1/3">
           <div id="testimonial__photo">
             <img
               src={`${PUBLIC_URL}/assets/images/testimonial-cat.jpg`}

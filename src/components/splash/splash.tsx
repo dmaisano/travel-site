@@ -17,7 +17,7 @@ const Splash: React.FC<SplashProps> = ({ splashRef }) => {
   if (windowWidth >= 800) {
     ourStartUrl = ourStartPortrait;
   }
-  if (windowWidth >= 1200) {
+  if (windowWidth >= 1010) {
     ourStartUrl = ourStart;
   }
 

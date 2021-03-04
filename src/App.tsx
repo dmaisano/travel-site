@@ -50,10 +50,13 @@ function App() {
         testimonialsRef={testimonialsRef}
         windowWidth={state.windowWidth}
       />
-      <Hero />
-      <Splash windowWidth={state.windowWidth} splashRef={splashRef} />
+      <Hero windowWidth={state.windowWidth} />
+      <Splash splashRef={splashRef} windowWidth={state.windowWidth} />
       <Features featuresRef={featuresRef} />
-      <Testimonials testimonialsRef={testimonialsRef} />
+      <Testimonials
+        testimonialsRef={testimonialsRef}
+        windowWidth={state.windowWidth}
+      />
       {/* <Footer /> */}
     </div>
   );

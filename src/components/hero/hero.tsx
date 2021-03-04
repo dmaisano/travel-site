@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import heroLarge from "./hero--large.jpg";
 import heroMedium from "./hero--medium.jpg";
 import heroSmall from "./hero--small.jpg";
 import heroSmaller from "./hero--smaller.jpg";
 import "./hero.css";
 
-const Hero: React.FC = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+type HeroProps = {
+  windowWidth: number;
+};
+const Hero: React.FC<HeroProps> = ({ windowWidth }) => {
   let imageUrl = heroSmaller;
 
   if (windowWidth >= 640) {
@@ -18,19 +20,6 @@ const Hero: React.FC = () => {
   if (windowWidth >= 1380) {
     imageUrl = heroLarge;
   }
-
-  // ? reference: https://itnext.io/responsive-background-images-using-react-hooks-941af365ea1f
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   return (
     <div
