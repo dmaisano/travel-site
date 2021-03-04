@@ -47,6 +47,14 @@
   }
 }
 
+@media (min-width: 800px) {
+  #testimonials {
+    h2 {
+      font-size: 3.75rem;
+    }
+  }
+}
+
 @media (min-width: 1000px) {
   #testimonials {
     background-color: transparent;

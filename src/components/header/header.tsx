@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({
   const [state, setState] = useState({
     expandedLogo: false,
     toggled: false,
-    previousScrollY: window.scrollY,
+    scrollY: window.scrollY,
     visisbleSection: "splash",
   });
 
@@ -37,23 +37,17 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   const onWindowScroll = useThrottledFn(() => {
-    const scrollY = window.scrollY;
-    const scrollDirection =
-      window.scrollY > state.previousScrollY ? "down" : "up";
+    calcScroll(headerRef, [splashRef, featuresRef, testimonialsRef]);
 
-    calcScroll(headerRef, scrollY, scrollDirection, [
-      splashRef,
-      featuresRef,
-      testimonialsRef,
-    ]);
-
-    setState({ ...state, previousScrollY: scrollY });
+    setState({ ...state, scrollY: window.scrollY });
   }, 200);
 
   useWindowScroll(onWindowScroll);
   useEffect(() => {
+    calcScroll(headerRef, [splashRef, featuresRef, testimonialsRef]);
+
     return () => onWindowScroll.cancel();
-  });
+  }, []);
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
@@ -74,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({
       className={classNames(`w-full absolute md:fixed`, {
         "z-50": state.toggled,
         "z-10": !state.toggled,
-        "header-dark": window.scrollY > 0,
+        "header-dark": state.scrollY > 0,
         expanded: state.toggled,
       })}
     >
