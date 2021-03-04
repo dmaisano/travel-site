@@ -1,6 +1,7 @@
 import { useDebouncedFn } from "beautiful-react-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import Features from "./components/features";
+import Footer from "./components/footer";
 import Header from "./components/header";
 import Hero from "./components/hero";
 import Splash from "./components/splash";
@@ -57,7 +58,7 @@ function App() {
         testimonialsRef={testimonialsRef}
         windowWidth={state.windowWidth}
       />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

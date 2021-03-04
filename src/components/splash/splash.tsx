@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import firstTrip from "./first-trip.jpg";
 import ourStartLandscape from "./our-start-landscape.jpg";
 import ourStartPortrait from "./our-start-portrait.jpg";
@@ -10,8 +10,7 @@ type SplashProps = {
   splashRef: any;
 };
 
-const Splash: React.FC<SplashProps> = ({ splashRef }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+const Splash: React.FC<SplashProps> = ({ splashRef, windowWidth }) => {
   let ourStartUrl = ourStartLandscape;
 
   if (windowWidth >= 800) {
@@ -20,19 +19,6 @@ const Splash: React.FC<SplashProps> = ({ splashRef }) => {
   if (windowWidth >= 1010) {
     ourStartUrl = ourStart;
   }
-
-  // ? reference: https://itnext.io/responsive-background-images-using-react-hooks-941af365ea1f
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
 
   return (
     <div ref={splashRef} id="splash" className="page-section">
