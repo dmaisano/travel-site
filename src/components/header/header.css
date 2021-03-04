@@ -33,7 +33,7 @@ header {
       row-gap: 10px;
       grid-template-areas:
         ". contact contact contact ."
-        ". beginning features testimonials .";
+        ". splash features testimonials .";
       height: auto;
 
       & > *:not(:last-child) {
@@ -60,8 +60,8 @@ header {
       transform: scale(1.5);
     }
 
-    #beginning {
-      grid-area: beginning;
+    #splash {
+      grid-area: splash;
     }
 
     #features {

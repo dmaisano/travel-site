@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import firstTrip from "./first-trip.jpg";
 import ourStartLandscape from "./our-start-landscape.jpg";
 import ourStartPortrait from "./our-start-portrait.jpg";
@@ -7,7 +7,6 @@ import "./splash.css";
 
 type SplashProps = {
   windowWidth: number;
-  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
   splashRef: any;
 };
 

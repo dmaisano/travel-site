@@ -4,6 +4,8 @@
 @import "normalize.css";
 
 @import "./modules/btn.css";
+/* @import "./modules/feature-item.css"; */
+@import "./modules/section.css";
 @import "./modules/wapper.css";
 
 * {
@@ -45,4 +47,8 @@ h4,
 h5,
 h6 {
   @apply text-base font-normal m-0;
+}
+
+p {
+  line-height: 1.65 !important;
 }
