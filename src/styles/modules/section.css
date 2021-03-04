@@ -1,3 +1,7 @@
-.section {
-  padding: 46px 0;
+.page-section {
+  padding: 2rem 0;
+
+  @media (min-width: 800px) {
+    padding: 4.5rem 0;
+  }
 }

@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
   return (
     <div
       id="hero"
-      className="relative pt-32 pb-16 border-b-10 border-primary"
+      className="relative py-32 border-b-10 border-primary"
       style={{
         backgroundImage: `url(${imageUrl})`,
       }}

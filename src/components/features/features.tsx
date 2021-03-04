@@ -8,7 +8,7 @@ type FeaturesProps = {
 
 const Features: React.FC<FeaturesProps> = ({ featuresRef }) => {
   return (
-    <div ref={featuresRef} id="features" className="bg-primary py-16">
+    <div ref={featuresRef} id="features" className="page-section bg-primary">
       <div className="wrapper">
         <div
           id="title"

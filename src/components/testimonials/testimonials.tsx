@@ -8,7 +8,7 @@ type TestimonialsProps = {
 
 const Testimonials: React.FC<TestimonialsProps> = ({ testimonialsRef }) => {
   return (
-    <div ref={testimonialsRef} id="testimonials" className="section">
+    <div ref={testimonialsRef} id="testimonials" className="page-section">
       {/* <img
         id="bg"
         className="sm:hidden lg:block absolute"

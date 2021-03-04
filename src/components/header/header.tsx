@@ -1,12 +1,14 @@
 import { useThrottledFn, useWindowScroll } from "beautiful-react-hooks";
 import classNames from "classnames";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { calcScroll } from "./calculate-scroll";
 import Hamburger from "./hamburger";
 import "./header.css";
 
 type HeaderProps = {
   windowWidth: number;
+  headerHeight: number;
+  headerRef: React.RefObject<HTMLElement>;
   splashRef: React.RefObject<HTMLDivElement>;
   featuresRef: React.RefObject<HTMLDivElement>;
   testimonialsRef: React.RefObject<HTMLDivElement>;
@@ -14,15 +16,15 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({
   featuresRef,
+  headerHeight,
+  headerRef,
   splashRef,
   testimonialsRef,
   windowWidth,
 }) => {
-  const headerRef = useRef<HTMLElement>(null);
   const [state, setState] = useState({
     expandedLogo: false,
     toggled: false,
-    headerHeight: headerRef.current?.clientHeight,
     previousScrollY: window.scrollY,
     visisbleSection: "splash",
   });
@@ -48,15 +50,6 @@ const Header: React.FC<HeaderProps> = ({
     setState({ ...state, previousScrollY: scrollY });
   }, 200);
 
-  useEffect(() => {
-    if (headerRef.current) {
-      setState({
-        ...state,
-        headerHeight: headerRef.current.clientHeight,
-      });
-    }
-  }, []);
-
   useWindowScroll(onWindowScroll);
   useEffect(() => {
     return () => onWindowScroll.cancel();
@@ -66,8 +59,8 @@ const Header: React.FC<HeaderProps> = ({
     if (ref.current) {
       let offset = ref.current.offsetTop;
 
-      if (windowWidth >= 800 && state.headerHeight) {
-        offset -= state.headerHeight;
+      if (windowWidth >= 800 && headerHeight) {
+        offset -= headerHeight;
       }
 
       window.scrollTo({ top: offset, behavior: "smooth" });
