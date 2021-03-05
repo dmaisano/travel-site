@@ -1,5 +1,6 @@
 import { useDebouncedFn } from "beautiful-react-hooks";
 import React, { useEffect, useRef, useState } from "react";
+import Contact from "./components/contact";
 import Features from "./components/features";
 import Footer from "./components/footer";
 import Header from "./components/header";
@@ -15,11 +16,21 @@ function App() {
   const [state, setState] = useState({
     headerHeight: 0,
     windowWidth: window.innerWidth,
+    modalIsVisible: false,
   });
+
+  const toggleModalVisibility = () => {
+    setState({
+      ...state,
+      modalIsVisible: !state.modalIsVisible,
+    });
+  };
 
   const onWindowResize = useDebouncedFn(() => {
     const headerHeight = headerRef.current?.clientHeight || 0;
+
     setState({
+      ...state,
       headerHeight,
       windowWidth: window.innerWidth,
     });
@@ -44,6 +55,7 @@ function App() {
   return (
     <div className="App">
       <Header
+        toggleModalVisibility={toggleModalVisibility}
         featuresRef={featuresRef}
         headerHeight={state.headerHeight}
         headerRef={headerRef}
@@ -59,6 +71,11 @@ function App() {
         windowWidth={state.windowWidth}
       />
       <Footer />
+
+      <Contact
+        isVisisble={state.modalIsVisible}
+        toggleModalVisibility={toggleModalVisibility}
+      />
     </div>
   );
 }

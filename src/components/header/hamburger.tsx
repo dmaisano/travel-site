@@ -13,6 +13,7 @@ const Hamburger: React.FC<HamburgerProps> = ({
   className,
   toggled,
   toggleHamburger,
+  isModal = false,
   ...props
 }) => {
   let classes: string = `flex items-center focus:outline-none ml-auto`;
@@ -23,7 +24,6 @@ const Hamburger: React.FC<HamburgerProps> = ({
 
   return (
     <button onClick={toggleHamburger} className={classes} {...props}>
-      {/* <div className={`nav-icon ${toggled ? ` nav-icon-toggled` : ``}`}> */}
       <div
         className={classNames(`nav-icon`, {
           "nav-icon-toggled": toggled,

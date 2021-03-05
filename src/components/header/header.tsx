@@ -6,6 +6,7 @@ import Hamburger from "./hamburger";
 import "./header.css";
 
 type HeaderProps = {
+  toggleModalVisibility: () => void;
   windowWidth: number;
   headerHeight: number;
   headerRef: React.RefObject<HTMLElement>;
@@ -15,6 +16,7 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({
+  toggleModalVisibility,
   featuresRef,
   headerHeight,
   headerRef,
@@ -66,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({
     <header
       ref={headerRef}
       className={classNames(`w-full absolute md:fixed`, {
-        "z-50": state.toggled,
+        "z-40": state.toggled,
         "z-10": !state.toggled,
         "header-dark": state.scrollY > 0,
         expanded: state.toggled,
@@ -74,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({
     >
       <div
         id="mobile-menu"
-        className={`z-50 block md:hidden absolute top-0 right-0 p-4`}
+        className={`z-40 block md:hidden absolute top-0 right-0 p-4`}
       >
         <Hamburger toggled={state.toggled} toggleHamburger={toggleHamburger} />
       </div>
@@ -82,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({
       <div className="relative grid w-full items-center">
         <div
           className={classNames(
-            `logo z-50 bg-primary text-white text-center leading-none`,
+            `logo z-40 bg-primary text-white text-center leading-none`,
             {
               "logo--expanded": state.expandedLogo,
             },
@@ -124,7 +126,11 @@ const Header: React.FC<HeaderProps> = ({
           >
             Testimonials
           </button>
-          <button id="contact" className="btn text-center text-white">
+          <button
+            onClick={toggleModalVisibility}
+            id="contact"
+            className="btn text-center text-white"
+          >
             Get in Touch
           </button>
         </div>
