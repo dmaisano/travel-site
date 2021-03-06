@@ -1,4 +1,4 @@
-import { useDebouncedFn } from "beautiful-react-hooks";
+import { useDebouncedFn, useWindowResize } from "beautiful-react-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import Contact from "./components/contact";
 import Features from "./components/features";
@@ -20,9 +20,11 @@ function App() {
   });
 
   const toggleModalVisibility = () => {
+    const modalIsVisible = !state.modalIsVisible;
+
     setState({
       ...state,
-      modalIsVisible: !state.modalIsVisible,
+      modalIsVisible,
     });
   };
 
@@ -36,7 +38,8 @@ function App() {
     });
   }, 333);
 
-  // ? reference: https://itnext.io/responsive-background-images-using-react-hooks-941af365ea1f
+  useWindowResize(onWindowResize);
+
   useEffect(() => {
     if (headerRef.current) {
       setState({
@@ -44,12 +47,6 @@ function App() {
         headerHeight: headerRef.current.clientHeight,
       });
     }
-
-    window.addEventListener("resize", onWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", onWindowResize);
-    };
   }, []);
 
   return (

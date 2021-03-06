@@ -28,22 +28,24 @@ const Contact: React.FC<ContactProps> = ({
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="mb-6">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="64"
-            height="48"
-          >
-            <path
-              d="M0 0v8l32 16L64 8V0H0zm0 16v32h64V16L32 32z"
-              fill="#2f5572"
-            />
-          </svg>
+        <div id="title" className="flex flex-col mb-12">
+          <div id="envelope" className="mb-6">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="48"
+            >
+              <path
+                d="M0 0v8l32 16L64 8V0H0zm0 16v32h64V16L32 32z"
+                fill="#2f5572"
+              />
+            </svg>
+          </div>
+          <h2 className="text-primary">
+            Get in <span className="font-medium">Touch</span>
+          </h2>
         </div>
-        <h2 className="text-primary mb-12">
-          Get in <span className="font-medium">Touch</span>
-        </h2>
 
         <div className="wrapper">
           <p>

@@ -38,3 +38,32 @@
     }
   }
 }
+
+@media (min-width: 530px) {
+  #contact-modal {
+    #title {
+      flex-direction: unset;
+
+      #envelope {
+        margin-right: 1rem;
+        margin-bottom: 0;
+      }
+    }
+
+    h2 {
+      flex-direction: unset;
+      font-size: 3.75rem;
+    }
+
+    p {
+      margin: auto 1rem;
+      max-width: 470px;
+    }
+
+    #socials {
+      grid-template-columns: repeat(4, 72px);
+      justify-content: center;
+      margin: 1.5rem;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { useThrottledFn, useWindowScroll } from "beautiful-react-hooks";
 import classNames from "classnames";
 import React, { useEffect, useState } from "react";
-import { calcScroll } from "./calculate-scroll";
+import { calcScroll as calcVisibleLink } from "./calculate-scroll";
 import Hamburger from "./hamburger";
 import "./header.css";
 
@@ -24,11 +24,14 @@ const Header: React.FC<HeaderProps> = ({
   testimonialsRef,
   windowWidth,
 }) => {
-  const [state, setState] = useState({
+  const [state, setState] = useState<{
+    expandedLogo: boolean;
+    toggled: boolean;
+    scrollY: number;
+  }>({
     expandedLogo: false,
     toggled: false,
     scrollY: window.scrollY,
-    visisbleSection: "splash",
   });
 
   const toggleHamburger = () => {
@@ -38,18 +41,37 @@ const Header: React.FC<HeaderProps> = ({
     });
   };
 
+  const resetHeaderLinks = () => {
+    if (headerRef.current) {
+      const links = headerRef.current.querySelectorAll("#links button");
+      for (const link of links) {
+        link.classList.remove(`is-current-link`);
+      }
+    }
+  };
+
   const onWindowScroll = useThrottledFn(() => {
-    calcScroll(headerRef, [splashRef, featuresRef, testimonialsRef]);
+    calcVisibleLink(windowWidth, headerRef, [
+      splashRef,
+      featuresRef,
+      testimonialsRef,
+    ]);
 
     setState({ ...state, scrollY: window.scrollY });
   }, 200);
 
   useWindowScroll(onWindowScroll);
   useEffect(() => {
-    calcScroll(headerRef, [splashRef, featuresRef, testimonialsRef]);
+    calcVisibleLink(windowWidth, headerRef, [
+      splashRef,
+      featuresRef,
+      testimonialsRef,
+    ]);
+
+    resetHeaderLinks();
 
     return () => onWindowScroll.cancel();
-  }, []);
+  }, [windowWidth]);
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
