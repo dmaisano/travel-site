@@ -60,14 +60,17 @@ function App() {
         testimonialsRef={testimonialsRef}
         windowWidth={state.windowWidth}
       />
-      <Hero windowWidth={state.windowWidth} />
+      <Hero
+        toggleModalVisibility={toggleModalVisibility}
+        windowWidth={state.windowWidth}
+      />
       <Splash splashRef={splashRef} windowWidth={state.windowWidth} />
       <Features featuresRef={featuresRef} />
       <Testimonials
         testimonialsRef={testimonialsRef}
         windowWidth={state.windowWidth}
       />
-      <Footer />
+      <Footer toggleModalVisibility={toggleModalVisibility} />
 
       <Contact
         isVisisble={state.modalIsVisible}

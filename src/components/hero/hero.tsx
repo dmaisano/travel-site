@@ -7,8 +7,9 @@ import "./hero.css";
 
 type HeroProps = {
   windowWidth: number;
+  toggleModalVisibility: () => void;
 };
-const Hero: React.FC<HeroProps> = ({ windowWidth }) => {
+const Hero: React.FC<HeroProps> = ({ windowWidth, toggleModalVisibility }) => {
   let imageUrl = heroSmaller;
 
   if (windowWidth >= 640) {
@@ -42,7 +43,10 @@ const Hero: React.FC<HeroProps> = ({ windowWidth }) => {
         >
           We create soul restoring journeys that inspire you to be you.
         </p>
-        <button className="btn btn--orange btn--large">
+        <button
+          onClick={toggleModalVisibility}
+          className="btn btn--orange btn--large"
+        >
           Get Started Today
         </button>
       </div>
